@@ -5,12 +5,13 @@ import React, { Component, createContext } from 'react';
 export const Auth0Context = createContext();
 
 // create provider
-class Auth0Provider extends Component {
+export class Auth0Provider extends Component {
     state = { message: 'testing message here!'};
     render() {
         const { message } = this.state;
         const { children } = this.props;
         const configObject = { message };
+
         return (
             <Auth0Context.Provider value={configObject}>
                 {children}
@@ -18,5 +19,3 @@ class Auth0Provider extends Component {
         )
     }
 }
-
-export default Auth0Provider;
