@@ -1,12 +1,18 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
+import 'bulma/css/bulma.css';
 import Navbar from './component/navbar';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <div className="hero is-info is-fullheight">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            this is my app
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
