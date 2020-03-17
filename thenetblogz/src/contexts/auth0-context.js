@@ -18,4 +18,4 @@ export class Auth0Provider extends Component {
             </Auth0Context.Provider>
         )
     }
-}
+};
