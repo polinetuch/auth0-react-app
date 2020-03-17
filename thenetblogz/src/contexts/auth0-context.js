@@ -6,7 +6,7 @@ export const Auth0Context = createContext();
 
 // create provider
 export class Auth0Provider extends Component {
-    state = { message: 'testing message here!'};
+    state = { message: 'about to create sth magical'};
     render() {
         const { message } = this.state;
         const { children } = this.props;
