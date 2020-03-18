@@ -17,10 +17,22 @@ export class Auth0Provider extends Component {
     componentDidMount() {
         this.initializeAuth0();
     }
+
+    // initialize the auth0 library
+    // initializeAuth0 = async => {
+    //     const auth0Client = await createAuth0Client(this.config);
+    //     this.setState({ auth0Client });
+    // }
+
+// using async and await to confirm authentication
+    async initializeAuth0() {
+        const auth0Client = await createAuth0Client(this.config);
+        this.setState({ auth0Client });
+    }
+
     render() {
-        const { message } = this.state;
         const { children } = this.props;
-        const configObject = { message };
+        const configObject = { };
 
         return (
             <Auth0Context.Provider value={configObject}>
