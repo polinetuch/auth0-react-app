@@ -7,7 +7,10 @@ export const Auth0Context = createContext();
 
 // create provider
 export class Auth0Provider extends Component {
-    state = { auth0Client: null };
+    state = { 
+        auth0Client: null,
+        isLoading: true    
+    };
     config = {
         domain: process.env.REACT_APP_AUTH0_DOMAIN,
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -28,15 +31,16 @@ export class Auth0Provider extends Component {
     async initializeAuth0() {
         try {
             const auth0Client = await createAuth0Client(this.config);
-            this.setState({ auth0Client });
+            this.setState({ auth0Client, isLoading: false });
         } catch (err) {
             console.log("Error occurred: ", err)
         }
     }
 
     render() {
+        const { isLoading } = this.state;
         const { children } = this.props;
-        const configObject = { };
+        const configObject = { isLoading };
 
         return (
             <Auth0Context.Provider value={configObject}>
