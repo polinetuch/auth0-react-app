@@ -26,8 +26,12 @@ export class Auth0Provider extends Component {
 
 // using async and await to confirm authentication
     async initializeAuth0() {
-        const auth0Client = await createAuth0Client(this.config);
-        this.setState({ auth0Client });
+        try {
+            const auth0Client = await createAuth0Client(this.config);
+            this.setState({ auth0Client });
+        } catch (err) {
+            console.log("Error occurred: ", err)
+        }
     }
 
     render() {
