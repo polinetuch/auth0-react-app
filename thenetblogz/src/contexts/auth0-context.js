@@ -35,16 +35,20 @@ export class Auth0Provider extends Component {
             const auth0Client = await createAuth0Client(this.config);
             const isAuthenticated = await auth0Client.isAuthenticated();
             const user = isAuthenticated ? await auth0Client.getUser() : null;
-            this.setState({ auth0Client, isLoading: false, isAuthenticated });
+            this.setState({ auth0Client, isLoading: false, isAuthenticated, user });
         } catch (err) {
             console.log("Error occurred: ", err)
         }
     }
 
     render() {
-        const { isLoading, isAuthenticated } = this.state;
+        const { isLoading, isAuthenticated, user } = this.state;
         const { children } = this.props;
-        const configObject = { isLoading, isAuthenticated };
+        const configObject = { 
+            isLoading, 
+            isAuthenticated, 
+            user 
+        };
 
         return (
             <Auth0Context.Provider value={configObject}>
