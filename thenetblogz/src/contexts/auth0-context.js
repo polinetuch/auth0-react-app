@@ -10,7 +10,8 @@ export class Auth0Provider extends Component {
     state = { 
         auth0Client: null,
         isLoading: true,
-        isAuthenticated: false    
+        isAuthenticated: false,
+        user: null    
     };
     config = {
         domain: process.env.REACT_APP_AUTH0_DOMAIN,
@@ -33,6 +34,7 @@ export class Auth0Provider extends Component {
         try {
             const auth0Client = await createAuth0Client(this.config);
             const isAuthenticated = await auth0Client.isAuthenticated();
+            const user = isAuthenticated ? await auth0Client.getUser() : null;
             this.setState({ auth0Client, isLoading: false, isAuthenticated });
         } catch (err) {
             console.log("Error occurred: ", err)
