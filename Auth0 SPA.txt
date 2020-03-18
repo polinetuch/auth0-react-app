@@ -1,0 +1,15 @@
+Add it to React (we'll use React Context and React Hooks)
+
+Initialize the Auth0 SPA SDK: createAuth0Client()
+Use the library to login: auth0Client.loginWithRedirect()
+Get the logged in user: auth0Client.getUser()
+Check if a user is authenticated: auth0Client.isAuthenticated()
+Get the authentication token: auth0Client.getTokenSilently()
+
+
+Instantiating the Auth0 SPA SDK - 
+
+Use Auth0 SPA SDK's createAuthClient() method
+Create an initializeAuth0 method where we create an auth0Client
+Create an auth0Client property on our state
+Create a config property to store our credentials from Auth0 (Domain and ClientID)

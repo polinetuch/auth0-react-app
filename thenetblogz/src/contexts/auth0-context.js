@@ -12,6 +12,10 @@ export class Auth0Provider extends Component {
         domain: process.env.REACT_APP_AUTH0_DOMAIN,
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
         redirect_uri: window.location.origin
+    };
+
+    componentDidMount() {
+        this.initializeAuth0();
     }
     render() {
         const { message } = this.state;
