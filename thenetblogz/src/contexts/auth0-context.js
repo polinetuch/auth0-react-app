@@ -42,12 +42,13 @@ export class Auth0Provider extends Component {
     }
 
     render() {
-        const { isLoading, isAuthenticated, user } = this.state;
+        const { auth0Client, isLoading, isAuthenticated, user } = this.state;
         const { children } = this.props;
         const configObject = { 
             isLoading, 
             isAuthenticated, 
-            user 
+            user,
+            loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p)
         };
 
         return (
