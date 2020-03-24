@@ -55,7 +55,10 @@ export class Auth0Provider extends Component {
             getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
             
             // Get information out of token
-            getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p)
+            getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
+
+            // Call the logout and get redirected to Auth0 logout
+            logout: (...p) => auth0Client.logout(...p)
         };
 
         return (
