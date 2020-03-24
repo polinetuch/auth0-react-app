@@ -23,25 +23,25 @@ export class Auth0Provider extends Component {
         this.initializeAuth0();
     }
 
-    // initialize the auth0 library
-    // initializeAuth0 = async => {
-    //     const auth0Client = await createAuth0Client(this.config);
-    //     this.setState({ auth0Client });
-    // }
-
-// using async and await to confirm authentication
+    // using async and await to confirm authentication
     async initializeAuth0() {
-            const auth0Client = await createAuth0Client(this.config);
-            this.setState({ auth0Client });
+        const auth0Client = await createAuth0Client(this.config);
+        this.setState({ auth0Client });
 
-            // Check to see if they have been redirected after login
-            if (window.location.search.includes('code=')) {
+        // Check to see if they have been redirected after login
+        if (window.location.search.includes('code=')) {
                 return this.handleRedirectCallback();
-            }
-            const isAuthenticated = await auth0Client.isAuthenticated();
-            const user = isAuthenticated ? await auth0Client.getUser() : null;
-            this.setState({ auth0Client, isLoading: false, isAuthenticated, user });
         }
+
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        const user = isAuthenticated ? await auth0Client.getUser() : null;
+        this.setState({ auth0Client, isLoading: false, isAuthenticated, user });
+    }
+
+    // Handle the authentication callback
+    async handleRedirectCallback() {
+        this.setState({ isLoading: true });
+        await this.state.auth0Clientl.handleRedirectCallback();
     }
 
     render() {
