@@ -31,13 +31,16 @@ export class Auth0Provider extends Component {
 
 // using async and await to confirm authentication
     async initializeAuth0() {
-        try {
             const auth0Client = await createAuth0Client(this.config);
+            this.setState({ auth0Client });
+
+            // Check to see if they have been redirected after login
+            if (window.location.search.includes('code=')) {
+                return this.handleRedirectCallback();
+            }
             const isAuthenticated = await auth0Client.isAuthenticated();
             const user = isAuthenticated ? await auth0Client.getUser() : null;
             this.setState({ auth0Client, isLoading: false, isAuthenticated, user });
-        } catch (err) {
-            console.log("Error occurred: ", err)
         }
     }
 
