@@ -29,23 +29,25 @@ export class Auth0Provider extends Component {
         this.setState({ auth0Client });
 
         // Check to see if they have been redirected after login
-        if (window.location.search.includes('code=')) {
+        if (window.location.search.includes === 'code=') {
             return this.handleRedirectCallback();
         }
 
         const isAuthenticated = await auth0Client.isAuthenticated();
         const user = isAuthenticated ? await auth0Client.getUser() : null;
-        this.setState({ auth0Client, isLoading: false, isAuthenticated, user });
+        this.setState({ isLoading: false, isAuthenticated, user });
     }
 
     // Handle the authentication callback
     async handleRedirectCallback() {
         this.setState({ isLoading: true });
-        await this.state.auth0Clientl.handleRedirectCallback();
 
+        await this.state.auth0Client.handleRedirectCallback();
         const user = await this.state.auth0Client.getUser();
-        this.setState({ user, isAuthenticated: true, isLoadingL: false})
-    }
+
+        this.setState({ user, isAuthenticated: true, isLoading: false});
+        window.history.replaceState({}, document.title, window.location.pathname);
+    };
 
     render() {
         const { auth0Client, isLoading, isAuthenticated, user } = this.state;
