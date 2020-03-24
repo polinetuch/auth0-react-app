@@ -30,7 +30,7 @@ export class Auth0Provider extends Component {
 
         // Check to see if they have been redirected after login
         if (window.location.search.includes('code=')) {
-                return this.handleRedirectCallback();
+            return this.handleRedirectCallback();
         }
 
         const isAuthenticated = await auth0Client.isAuthenticated();
@@ -42,6 +42,9 @@ export class Auth0Provider extends Component {
     async handleRedirectCallback() {
         this.setState({ isLoading: true });
         await this.state.auth0Clientl.handleRedirectCallback();
+
+        const user = await this.state.auth0Client.getUser();
+        this.setState({ user, isAuthenticated: true, isLoadingL: false})
     }
 
     render() {
