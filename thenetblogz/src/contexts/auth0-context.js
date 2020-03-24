@@ -52,7 +52,10 @@ export class Auth0Provider extends Component {
             loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
 
             // Grab token so we can use for API calls
-            getTokenSilently: (...p) => auth0Client.getTokenSilently(...p)
+            getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+            
+            // Get information out of token
+            getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p)
         };
 
         return (
