@@ -48,7 +48,11 @@ export class Auth0Provider extends Component {
             isLoading, 
             isAuthenticated, 
             user,
-            loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p)
+            // LoginWithRedirect method is to pass value directly to child component
+            loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+
+            // Grab token so we can use for API calls
+            getTokenSilently: (...p) => auth0Client.getTokenSilently(...p)
         };
 
         return (
