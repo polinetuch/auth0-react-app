@@ -1,15 +1,28 @@
-Add it to React (we'll use React Context and React Hooks)
+Add it to React (we'll use React Context and React Hooks):
 
-Initialize the Auth0 SPA SDK: createAuth0Client()
-Use the library to login: auth0Client.loginWithRedirect()
-Get the logged in user: auth0Client.getUser()
-Check if a user is authenticated: auth0Client.isAuthenticated()
-Get the authentication token: auth0Client.getTokenSilently()
+- Initialize the Auth0 SPA SDK: createAuth0Client()
+- Use the library to login: auth0Client.loginWithRedirect()
+- Get the logged in user: auth0Client.getUser()
+- Check if a user is authenticated: auth0Client.isAuthenticated()
+- Get the authentication token: auth0Client.getTokenSilently()
 
 
-Instantiating the Auth0 SPA SDK - 
+Instantiating the Auth0 SPA SDK:
+(SPA: Single Page Application, SDK: Software Development Kit)
 
-Use Auth0 SPA SDK's createAuthClient() method
-Create an initializeAuth0 method where we create an auth0Client
-Create an auth0Client property on our state
-Create a config property to store our credentials from Auth0 (Domain and ClientID)
+- Use Auth0 SPA SDK's createAuthClient() method
+- Create an initializeAuth0 method where we create an auth0Client
+- Create an auth0Client property on our state
+- Create a config property to store our credentials from Auth0 (Domain and ClientID)
+
+Logging in a User:
+
+- Configure Universal Login from the Auth0 Dashboard
+- Create a login method inside our Auth0 Context
+- Use the login method inside our React components
+
+
+
+Image address:
+https://www.freelogodesign.org/share-preview/33e5203b-5c73-4250-8abd-d57b0cc40736
+https://www.freelogodesign.org/file/app/client/thumb/33e5203b-5c73-4250-8abd-d57b0cc40736_1000x600-watermark.png?20200318
