@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <div className="hero is-info is-fullheight">
         <div className="hero-body">
-          <div className="container has-text-centered">
+          <div className="container has-text-centered"> 
             {!isLoading && !user && (
             <>
               <h1>Click here</h1>
