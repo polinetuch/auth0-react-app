@@ -16,6 +16,26 @@ export default function Header() {
                                 The Net Blogz
                             </button>
                         </div>
+                        <div className="navbar-end">
+                        {/* if there is no user, show the login button */}
+                        {
+                            !isLoading && !user && (
+                            <button onClick={loginWithRedirect} className="navbar-item">
+                                Login
+                            </button>
+                            )
+                        }
+
+                        {
+                            !isLoading && user && (
+                                <>
+                                <button className="navbar-item">{user.name}</button>
+                                <button onClick={() => logout ({ returnTo: window.location.origin})}
+                                className="navbar-item"> Logout</button>           
+                                </> 
+                            )
+                        }
+                        </div>
                     </div>
                 </div>
             </nav>
