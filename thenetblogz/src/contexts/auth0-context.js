@@ -1,9 +1,11 @@
 // src/contexts/auth0-context.js
-import React, { Component, createContext } from 'react';
+import React, { Component, createContext, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
 
 // create the context
 export const Auth0Context = createContext();
+
+export const useAuth0 = () => useContext(Auth0Context);
 
 // create provider
 export class Auth0Provider extends Component {
@@ -29,7 +31,7 @@ export class Auth0Provider extends Component {
         this.setState({ auth0Client });
 
         // Check to see if they have been redirected after login
-        if (window.location.search.includes === 'code=') {
+        if (window.location.search.includes('code=')) {
             return this.handleRedirectCallback();
         }
 
@@ -66,7 +68,7 @@ export class Auth0Provider extends Component {
             getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
 
             // Call the logout and get redirected to Auth0 logout
-            logout: (...p) => auth0Client.logout(...p)
+            logout: (...p) => auth0Client.logout(...p),
         };
 
         return (

@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import 'bulma/css/bulma.css';
-import { Auth0Context } from './contexts/auth0-context';
+import { useAuth0 } from './contexts/auth0-context';
 
 function App() {
   // useContext so that all Auth0Context is available to use in App.js 
-  const { isLoading, user, loginWithRedirect} = useContext(Auth0Context);
+  const { isLoading, user, loginWithRedirect, logout} = useAuth0;
+  console.log(user)
   return (
     <div className="App">
       <div className="hero is-info is-fullheight">
@@ -16,6 +17,16 @@ function App() {
               <button onClick={loginWithRedirect} className="button is-danger">Login</button>
             </>
           )}
+          { !isLoading && user && (
+            <>
+              <h1>You are logged in</h1>
+              <h3>Welcome {user.name}</h3>
+              {user.picture && <img src={user.picture} alt="My Avatar"/>}
+            </>
+          )}
+
+          <button onClick={() => logout({ returnTo: window.location.origin})}
+          className="button is=small is-dark">Logout</button>
           </div>
         </div>
       </div>
