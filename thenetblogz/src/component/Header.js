@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
-import { useAuth0 } from './contexts/auth0-context';
+import { useAuth0 } from '../contexts/auth0-context';
+import './Header.css';
 
 export default function Header() {
     const { isLoading, user, loginWithRedirect, logout } = useAuth0();
@@ -16,6 +17,7 @@ export default function Header() {
                                 The Net Blogz
                             </button>
                         </div>
+
                         <div className="navbar-end">
                         {/* if there is no user, show the login button */}
                         {

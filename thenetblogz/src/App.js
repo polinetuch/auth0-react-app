@@ -1,13 +1,15 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
 import { useAuth0 } from './contexts/auth0-context';
+import Header from './component/Header';
 
 function App() {
   // useContext so that all Auth0Context is available to use in App.js 
-  const { isLoading, user, loginWithRedirect, logout} = useAuth0;
+  const { isLoading, user, loginWithRedirect, logout} = useAuth0();
   console.log(user)
   return (
-    <div className="App">
+    <>
+    <Header />
       <div className="hero is-info is-fullheight">
         <div className="hero-body">
           <div className="container has-text-centered"> 
@@ -30,7 +32,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
