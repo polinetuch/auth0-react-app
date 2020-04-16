@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
+import useAuth0 from '../contexts/auth0-context';
 
 class Navbar extends React.Component {
     constructor() {
@@ -12,9 +12,18 @@ class Navbar extends React.Component {
     };
 
     render() {
+        const { isLoading, user} = useAuth0();
         return (
         <>
-        <form>
+        {
+            !isLoading && user && (
+                <>
+                {user.picture && <img src={user.picture} alt="My Avatar"/>}
+                </>
+            )
+        }
+
+        {/* <form>
             <label>
                 Name:
                 <input type="text" 
@@ -23,7 +32,7 @@ class Navbar extends React.Component {
                     onChange={this.handleChange} />
             </label>
             </form>
-            <h1>Welcome: {this.state.name}</h1>
+            <h1>Welcome: {this.state.username}</h1> */}
         </>)
     }
 }
