@@ -31,7 +31,8 @@ export default function Header() {
                         {
                             !isLoading && user && (
                                 <>
-                                <button className="navbar-item">{user.name}</button>
+                                <img src={user.picture} className="myavatar" alt="My Avatar"/>
+                                <button className="navbar-item">Welcome, {user.name}</button>
                                 <button onClick={() => logout ({ returnTo: window.location.origin})}
                                 className="navbar-item"> Logout</button>           
                                 </> 

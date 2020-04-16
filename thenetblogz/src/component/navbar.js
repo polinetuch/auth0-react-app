@@ -1,40 +1,35 @@
-import React from 'react';
-import useAuth0 from '../contexts/auth0-context';
+// import React from 'react';
+// import useAuth0 from '../contexts/auth0-context';
 
-class Navbar extends React.Component {
-    constructor() {
-        super();
-        this.state = { name: ''};
-    }
+// class Navbar extends React.Component {
+//     constructor() {
+//         super();
+//         this.state = { name: ''};
+//     }
 
-    handleChange = event => {
-        this.setState({ name: event.target.value })
-    };
+//     handleChange = event => {
+//         this.setState({ name: event.target.value })
+//     };
 
-    render() {
-        const { isLoading, user} = useAuth0();
-        return (
-        <>
-        {
-            !isLoading && user && (
-                <>
-                {user.picture && <img src={user.picture} alt="My Avatar"/>}
-                </>
-            )
-        }
+//     render() {
+       
+//         return (
+//         <>
 
-        {/* <form>
-            <label>
-                Name:
-                <input type="text" 
-                    name="name"
-                    value={this.state.username}
-                    onChange={this.handleChange} />
-            </label>
-            </form>
-            <h1>Welcome: {this.state.username}</h1> */}
-        </>)
-    }
-}
+//         <form>
+//             <label>
+//                 Name:
+//                 <input type="text" 
+//                     name="name"
+//                     value={this.state.username}
+//                     onChange={this.handleChange} />
+//             </label>
+//             </form>
+//             <h1>Welcome: {this.state.username}</h1>
 
-export default Navbar;
+//         </>
+//         )
+//     }
+// }
+
+// export default Navbar;

@@ -5,7 +5,7 @@ import Header from './component/Header';
 
 function App() {
   // useContext so that all Auth0Context is available to use in App.js 
-  const { isLoading, user, loginWithRedirect, logout} = useAuth0();
+  const { isLoading, user, loginWithRedirect} = useAuth0();
 
   return (
     <>
